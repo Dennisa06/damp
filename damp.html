@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Leonardo da Vinci</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        :root {
+            --primary: #0d6efd;
+        }
+        
+        /* Navbar */
+        .navbar-custom {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand-custom {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .text-primary-custom {
+            color: var(--primary) !important;
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/3/3c/Da_Vinci_Vitruve_Luc_Viatour.jpg') no-repeat center;
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .skill-badge {
+            background-color: var(--primary);
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        /* Portfolio Section */
+        .portfolio-section {
+            padding: 80px 0;
+        }
+        
+        .portfolio-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            margin-bottom: 30px;
+            height: 100%;
+            position: relative;
+        }
+        
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-img {
+            filter: brightness(0.5);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        
+        .portfolio-card:hover .portfolio-title {
+            transform: translateY(0);
+        }
+        
+        .portfolio-desc {
+            font-size: 0.9rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+            opacity: 0.9;
+        }
+        
+        .portfolio-card:hover .portfolio-desc {
+            transform: translateY(0);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 0;
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .contact-form .form-control {
+            border-radius: 5px;
+            padding: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form .btn {
+            background-color: white;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #212529;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .social-icon {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            color: #adb5bd;
+            transform: translateY(-3px);
+        }
+        
+        /* Tentang Section */
+        .about-leonardo {
+            padding: 60px 20px;
+            background-color: #f8f8f8;
+        }
+        
+        .about-leonardo h2 {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            text-align: justify;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 80vh;
+                padding: 0 20px;
+            }
+            
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .portfolio-overlay {
+                padding: 15px;
+            }
+            
+            .portfolio-title {
+                font-size: 1.3rem;
+            }
+            
+            .portfolio-desc {
+                font-size: 0.8rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand navbar-brand-custom" href="#">
+                <span class="text-primary-custom">Leonardo</span> da Vinci
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Karya</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Kontak</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Leonardo_self.jpg/220px-Leonardo_self.jpg" alt="Leonardo da Vinci" class="profile-img rounded-circle mb-4">
+            <h1 class="display-4 fw-bold mb-3">Leonardo da Vinci</h1>
+            <p class="fs-5 mb-4">Seniman, Ilmuwan, dan Penemu Renaisans</p>
+            <a href="#portfolio" class="btn btn-primary btn-lg px-4 py-2">Lihat Karya</a>
+        </div>
+    </section>
+
+ <!-- About Section -->
+ <section class="about-leonardo" id="about">
+    <h2>Tentang Saya</h2>
+    <div class="about-content">
+        <div class="about-text">
+            Saya adalah seorang polymath yang selalu haus akan pengetahuan dan keindahan. Sejak kecil, saya telah terpesona oleh alam dan mekanisme yang menggerakkan dunia ini. Melalui seni, saya mengekspresikan pemahaman saya tentang keindahan, sementara melalui sains, saya berusaha mengungkap rahasia alam semesta.
+        </div>
+        <div class="about-text">
+            Saya percaya bahwa seni dan sains adalah dua sisi dari mata uang yang sama. Setiap lukisan saya adalah hasil studi mendalam tentang anatomi, cahaya, dan proporsi. Setiap penemuan saya terinspirasi dari keindahan geometri alam. Hidup terlalu singkat untuk mempelajari semua yang ingin saya ketahui, tetapi saya akan terus belajar dan menciptakan selama napas masih berhembus.
+        </div>
+    </div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="portfolio-section" id="portfolio">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Karya <span class="text-primary-custom">Terkenal</span></h2>
+        <div class="d-flex flex-row flex-nowrap overflow-auto pb-4" style="gap: 20px;">
+            <!-- Project 1: Mona Lisa -->
+            <div class="flex-shrink-0" style="width: 80%; max-width: 500px;">
+                <div class="portfolio-card h-100">
+                    <div class="img-container" style="height: 400px; overflow: hidden;">
+                        <img src="https://i.seadn.io/gae/NaUOBEC_T-1CE4HEJ9R6Th6pZGrC8rApxusWCjP4vlPjpP_O_RPaC2Txw1-vhTXFGEaY88Hy8RVJRlcCvc4BjgFVSp3x-4577KXHhQ?auto=format&w=1400" 
+                             class="card-img-top portfolio-img h-100 w-auto" 
+                             alt="Mona Lisa"
+                             style="object-fit: cover; object-position: center 30%;">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Mona Lisa</h3>
+                        <p class="portfolio-desc">Karya yang paling saya banggakan, menggambarkan Lisa del Giocondo dengan senyum misterius yang telah memikat dunia selama berabad-abad. Lukisan ini adalah hasil studi mendalam tentang emosi manusia dan teknik sfumato.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2: The Last Supper -->
+            <div class="flex-shrink-0" style="width: 80%; max-width: 500px;">
+                <div class="portfolio-card h-100">
+                    <div class="img-container" style="height: 400px; overflow: hidden;">
+                        <img src="https://renaissanceportfolios.weebly.com/uploads/2/6/9/8/26989869/1677246_orig.jpg" 
+                             class="card-img-top portfolio-img h-100 w-auto" 
+                             alt="The Last Supper"
+                             style="object-fit: cover; object-position: center 30%;">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">The Last Supper</h3>
+                        <p class="portfolio-desc">Komposisi yang menantang ini menggambarkan momen ketika Yesus mengumumkan bahwa salah satu rasul akan mengkhianatinya. Saya bereksperimen dengan perspektif dan ekspresi wajah untuk menangkap emosi yang kompleks.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3: Lady with an Ermine -->
+            <div class="flex-shrink-0" style="width: 80%; max-width: 500px;">
+                <div class="portfolio-card h-100">
+                    <div class="img-container" style="height: 400px; overflow: hidden;">
+                        <img src="https://i.ytimg.com/vi/NzT0fgrLL_c/maxresdefault.jpg" 
+                             class="card-img-top portfolio-img h-100 w-auto" 
+                             alt="Lady with an Ermine"
+                             style="object-fit: cover; object-position: center 30%;">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Lady with an Ermine</h3>
+                        <p class="portfolio-desc">Potret Cecilia Gallerani, kekasih Ludovico Sforza. Saya menangkap keanggunan subjek dan simbolisme musang putih yang melambangkan kemurnian. Karya ini menunjukkan penguasaan saya dalam menggambarkan tekstur dan cahaya.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Custom scrollbar styling */
+    .portfolio-section .d-flex::-webkit-scrollbar {
+        height: 8px;
+    }
+    .portfolio-section .d-flex::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+    .portfolio-section .d-flex::-webkit-scrollbar-thumb {
+        background: #0d6efd;
+        border-radius: 10px;
+    }
+    .portfolio-section .d-flex::-webkit-scrollbar-thumb:hover {
+        background: #0b5ed7;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .portfolio-section .flex-shrink-0 {
+            width: 85% !important;
+        }
+    }
+</style>
+<!-- Contact Section -->
+<section class="contact-section" id="contact" style="background-color: #f5deb3; color: #654321;">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Hubungi <span style="color: #8b4513;">Saya</span></h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <form class="contact-form">
+                    <div class="mb-3">
+                        <label for="nameInput" class="form-label" style="color: #654321;">Nama</label>
+                        <input type="text" class="form-control" id="nameInput" aria-describedby="nameHelp" style="border-color: #d2b48c;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label" style="color: #654321;">Alamat Email</label>
+                        <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" style="border-color: #d2b48c;">
+                    </div>
+                    <div class="mb-3">
+                        <label for="questionInput" class="form-label" style="color: #654321;">Pertanyaan</label>
+                        <textarea class="form-control" id="questionInput" rows="3" style="border-color: #d2b48c;"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn" style="background-color: #8b4513; color: #fff8dc; border: none; padding: 12px 30px; border-radius: 50px;">
+                            Kirim Pesan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons mb-4">
+                <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2025 Kelompok Leonardo da Vinci. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
